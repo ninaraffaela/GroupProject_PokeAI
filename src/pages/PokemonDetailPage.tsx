@@ -5,7 +5,9 @@ import axios from "axios";
 import { Pokemon } from "../types/Pokemon";
 import Navbar from "../components/Navbar";
 
-const PokemonDetailPage: React.FC = () => {
+const PokemonDetailPage: React.FC<{ toggleTheme: () => void }> = ({
+  toggleTheme,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
@@ -19,11 +21,8 @@ const PokemonDetailPage: React.FC = () => {
       );
       setPokemon(response.data);
 
-      // Fetch species data
       const speciesRes = await axios.get(response.data.species.url);
       const evolutionUrl = speciesRes.data.evolution_chain.url;
-
-      // Fetch evolution chain
       const evolutionRes = await axios.get(evolutionUrl);
       const chain = evolutionRes.data.chain;
 
@@ -55,7 +54,7 @@ const PokemonDetailPage: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar onToggleTheme={toggleTheme} />
       <div className="p-4 max-w-xl mx-auto">
         <button
           onClick={() => navigate(-1)}
@@ -68,7 +67,7 @@ const PokemonDetailPage: React.FC = () => {
           <img
             src={pokemon.sprites.front_default}
             alt={pokemon.name}
-            className="mx-auto w-32 h-32"
+            className="mx-auto w-32 h-32 transition-transform duration-300 hover:scale-125"
           />
           <h1 className="text-3xl capitalize mt-4 font-bold text-gray-800 dark:text-white">
             {pokemon.name}
@@ -93,7 +92,7 @@ const PokemonDetailPage: React.FC = () => {
             <img
               src={evolutionImage}
               alt={evolutionName}
-              className="mx-auto w-24 h-24"
+              className="mx-auto w-24 h-24 transition-transform duration-300 hover:scale-125"
             />
             <p className="capitalize mt-2 text-gray-800 dark:text-white font-medium">
               {evolutionName}
