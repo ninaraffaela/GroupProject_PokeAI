@@ -70,7 +70,7 @@ const PokemonDetailPage: React.FC<{ toggleTheme: () => void }> = ({
             className="mx-auto w-32 h-32 transition-transform duration-300 hover:scale-125"
           />
           <h1 className="text-3xl capitalize mt-4 font-bold text-gray-800 dark:text-white">
-            {pokemon.name}
+            #{pokemon.id}  {pokemon.name}
           </h1>
           <div className="flex justify-center gap-2 mt-2">
             {pokemon.types.map((t) => (

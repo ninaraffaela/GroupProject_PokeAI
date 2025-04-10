@@ -17,6 +17,9 @@ We are given a Notion Project Requirement, and a Figma Overview for a
 - SearchBar for specific PokeMon
 - Dark/Light Toggle
 - 
+_____________________________________________
+## TechStack
+![TechStack](TechStack.png)
 
 _________________________
 
