@@ -17,7 +17,7 @@ const HomePage: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   useEffect(() => {
     async function fetchPokemons() {
       const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=50"
+        "https://pokeapi.co/api/v2/pokemon?limit=151"
       );
       const results = await Promise.all(
         response.data.results.map(async (p: any) => {
