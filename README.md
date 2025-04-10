@@ -30,7 +30,6 @@ _________________________
 ![Xmind Overview KICKOFF](Xmind_Kickoff-1.png)
 
 ### Xmind 6hrs in
-![Xmind Overview 6hrs in](Xmind_soFar.png)
 ![Xmind Overview 6hrs in](Xmind_soFar-1.png)
 
 👾 Let´s Fetz 🍀
