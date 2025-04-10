@@ -17,7 +17,7 @@ const PokemonCard = ({ pokemon }: Props) => {
         className="mx-auto transition-transform duration-300 hover:scale-125"
       />
       <h2 className="text-center capitalize mt-2 font-semibold">
-        {pokemon.name}
+        #{pokemon.id}  {pokemon.name}
       </h2>
     </Link>
   );
