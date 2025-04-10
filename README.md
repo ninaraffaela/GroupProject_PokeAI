@@ -32,6 +32,13 @@ _________________________
 
 
 👾 Let´s Fetz 🍀
+
+_____________________________________________
+### needed to make it work:
+- npm i react-router-dom
+- npm install lucide-react
+- npm i axios
+- npm install tailwindcss @tailwindcss/vite
 ______________________________________________
 
 # Standard Initial React Vite Readme Filling: 
