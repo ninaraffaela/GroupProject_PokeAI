@@ -50,7 +50,7 @@ const typeColors: Record<string, string> = {
 
 const TypeFilterSidebar: React.FC<Props> = ({ selectedType, onTypeChange }) => {
   return (
-    <div className="flex flex-wrap gap-2 mb-4">
+    <div className="grid grid-cols-2 gap-2 mt-10 ">
       {types.map((type) => (
         <button
           key={type}
