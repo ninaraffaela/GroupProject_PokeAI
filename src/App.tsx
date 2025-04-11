@@ -1,34 +1,30 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PokemonDetailPage from "./pages/PokemonDetailPage";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-  }, [darkMode]);
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
 
-  const toggleTheme = () => setDarkMode((prev) => !prev);
+  const darkClasses = "bg-stone-800 text-stone-50 min-h-screen";
+  const lightClasses = "bg-stone-50 text-stone-800 min-h-screen";
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage toggleTheme={toggleTheme} />} />
-        <Route
-          path="/pokemon/:id"
-          element={<PokemonDetailPage toggleTheme={toggleTheme} />}
-        />
-      </Routes>
-    </Router>
+    <div className={isDarkMode ? darkClasses : lightClasses}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage toggleTheme={toggleTheme} />} />
+          <Route
+            path="/pokemon/:id"
+            element={<PokemonDetailPage toggleTheme={toggleTheme} />}
+          />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
