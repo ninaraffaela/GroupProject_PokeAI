@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Pokemon } from "../types/Pokemon";
 import Navbar from "../components/Navbar";
+import HeightIcon from "../assets/img/height.png";
+import WeightIcon from "../assets/img/weight.png";
+import PokeballIcon from "../assets/img/iconoir_pokeball.png"
 
 type Props = {
   toggleTheme: () => void;
@@ -83,8 +86,28 @@ const PokemonDetailPage: React.FC<Props> = ({ toggleTheme }) => {
               </span>
             ))}
           </div>
+          <div className="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+            <div className="bg-gray-100 dark:bg-gray-700 flex gap-1 justify-between items-center p-3 rounded-lg shadow-inner">
+              <img src={HeightIcon} alt="height" />
+              <strong>Height:</strong>
+              <p>{pokemon.height / 10} m</p>
+            </div>
+            <div className="bg-gray-100 dark:bg-gray-700 flex gap-1 justify-between items-center p-3 rounded-lg shadow-inner">
+              <img src={WeightIcon} alt="weight" />
+              <strong>Weight:</strong>
+              <p>{pokemon.weight / 10} kg</p>
+            </div>
+            <div className="bg-gray-100 dark:bg-gray-700 flex gap-1 justify-between items-center p-3 rounded-lg shadow-inner col-span-2">
+              <img src={PokeballIcon} alt="pokeball" />
+              <strong>Base Experience:</strong>
+              
+              <p>{pokemon.base_experience}</p>
+            </div>
+          </div>
+        </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700 dark:text-gray-300">
+{/* Oguz 
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700 dark:text-gray-300">
             <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-inner">
               <strong>Height:</strong>
               <p>{pokemon.height / 10} m</p>
@@ -94,14 +117,11 @@ const PokemonDetailPage: React.FC<Props> = ({ toggleTheme }) => {
               <p>{pokemon.weight / 10} kg</p>
             </div>
             <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-inner">
-              <strong>Base Exp:</strong>
-              <p>{pokemon.base_experience}</p>
-            </div>
-          </div>
-        </div>
+              <strong>Base Exp:</strong> */}
+
 
         {evolutionName && (
-          <div className="mt-10 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl border border-gray-200 dark:border-gray-800">
+          <div className="mt-10 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800">
             <h2 className="text-2xl font-semibold text-center text-gray-800 dark:text-white mb-4">
               Evolution
             </h2>
