@@ -1,13 +1,14 @@
 import React from "react";
-import { Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import PokeLogo from "../assets/img/PokemonLogo.png";
 
 type Props = {
   onToggleTheme?: () => void;
+  isDarkMode?: boolean;
 };
 
-const Navbar: React.FC<Props> = ({ onToggleTheme }) => {
+const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkMode }) => {
   const navigate = useNavigate();
 
   return (
@@ -29,7 +30,7 @@ const Navbar: React.FC<Props> = ({ onToggleTheme }) => {
         className="p-2 rounded-full hover:bg-red-400"
         aria-label="Toggle Dark Mode"
       >
-        <Moon size={20} />
+        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
       </button>
     </nav>
   );
