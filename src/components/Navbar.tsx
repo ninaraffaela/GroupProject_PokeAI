@@ -5,12 +5,11 @@ import PokeLogo from "../assets/img/PokemonLogo.png";
 
 type Props = {
   onToggleTheme?: () => void;
-  isDarkMode?: boolean;
 };
 
-const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkMode }) => {
+const Navbar: React.FC<Props> = ({ onToggleTheme }) => {
   const navigate = useNavigate();
-
+  const isDark = document.documentElement.classList.contains("dark");
   return (
     <nav className="flex items-center justify-between p-4 bg-blue-500 text-white">
       <h1
@@ -30,7 +29,7 @@ const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkMode }) => {
         className="p-2 rounded-full hover:bg-red-400"
         aria-label="Toggle Dark Mode"
       >
-        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+        {isDark ? <Sun size={20} /> : <Moon size={20} />}
       </button>
     </nav>
   );
