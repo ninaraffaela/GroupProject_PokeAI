@@ -1,14 +1,13 @@
+// src/pages/PokemonDetailPage.tsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Pokemon } from "../types/Pokemon";
 import Navbar from "../components/Navbar";
 
-type Props = {
-  toggleTheme: () => void;
-};
-
-const PokemonDetailPage: React.FC<Props> = ({ toggleTheme }) => {
+const PokemonDetailPage: React.FC<{ toggleTheme: () => void }> = ({
+  toggleTheme,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
@@ -51,62 +50,51 @@ const PokemonDetailPage: React.FC<Props> = ({ toggleTheme }) => {
     fetchPokemon();
   }, [id]);
 
-  if (!pokemon) return <p className="p-4">Loading...</p>;
+  if (!pokemon) return <p className="p-4">👾Loading all your pokemon...</p>;
 
   return (
-    <div className="relative">
+    <div>
       <Navbar onToggleTheme={toggleTheme} />
       <div className="p-4 max-w-xl mx-auto">
         <button
           onClick={() => navigate(-1)}
-          className="mb-4 px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full hover:scale-105 transition"
+          className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           ← Back
         </button>
 
-        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 text-center border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 text-center">
           <img
             src={pokemon.sprites.front_default}
             alt={pokemon.name}
-            className="mx-auto w-40 h-40 transition-transform duration-300 hover:scale-125 drop-shadow-lg"
+            className="mx-auto w-32 h-32 transition-transform duration-300 hover:scale-125"
           />
-          <h1 className="text-4xl capitalize mt-4 font-extrabold tracking-wide text-gray-900 dark:text-white">
-            {pokemon.name}
+          <h1 className="text-3xl capitalize mt-4 font-bold text-gray-800 dark:text-white">
+            #{pokemon.id}  {pokemon.name}
           </h1>
-          <div className="flex justify-center flex-wrap gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-2">
             {pokemon.types.map((t) => (
               <span
                 key={t.type.name}
-                className="bg-gradient-to-r from-blue-400 to-purple-500 px-4 py-1 rounded-full text-sm text-white font-medium shadow"
+                className="bg-gradient-to-r from-blue-400 to-blue-600 px-3 py-1 rounded-full text-sm text-white capitalize shadow"
               >
                 {t.type.name}
               </span>
             ))}
           </div>
-          <div className="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
-            <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg shadow-inner">
-              <strong>Height:</strong> {pokemon.height / 10} m
-            </div>
-            <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg shadow-inner">
-              <strong>Weight:</strong> {pokemon.weight / 10} kg
-            </div>
-            <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg shadow-inner col-span-2">
-              <strong>Base Experience:</strong> {pokemon.base_experience}
-            </div>
-          </div>
         </div>
 
         {evolutionName && (
-          <div className="mt-10 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800">
-            <h2 className="text-2xl font-semibold text-center text-gray-800 dark:text-white mb-4">
+          <div className="mt-8 bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow text-center">
+            <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-100 mb-4">
               Evolution
             </h2>
             <img
               src={evolutionImage}
               alt={evolutionName}
-              className="mx-auto w-28 h-28 transition-transform duration-300 hover:scale-125 drop-shadow"
+              className="mx-auto w-24 h-24 transition-transform duration-300 hover:scale-125"
             />
-            <p className="capitalize mt-2 text-center text-gray-700 dark:text-gray-200 text-lg font-medium">
+            <p className="capitalize mt-2 text-gray-800 dark:text-white font-medium">
               {evolutionName}
             </p>
           </div>
