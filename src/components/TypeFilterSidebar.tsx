@@ -89,7 +89,7 @@ const typeIcons: Record<string, string> = {
 
 const TypeFilterSidebar: React.FC<Props> = ({ selectedType, onTypeChange }) => {
   return (
-    <div className="grid grid-cols-2 gap-3 mt-10 ">
+    <div className="grid grid-cols-2 h-20 gap-2 mt-10 ">
       {types.map((type) => (
         <button
           key={type}
@@ -99,7 +99,7 @@ const TypeFilterSidebar: React.FC<Props> = ({ selectedType, onTypeChange }) => {
           } ${typeColors[type]}`}
         >
           {/* {typeIcons[type]}  */}
-          <div className="bg-stone-50 rounded-full w-15 h-15">
+          <div className="bg-stone-50 rounded-full w-10 h-10">
             <img className="object-contain w-full h-full p-2" src={typeIcons[type]} alt="" />
           </div>
           {type}
